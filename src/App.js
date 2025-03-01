@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import MemeExplorer from './MemeExplorer';
+import MemeVerse from './Memeverse';
+import MemeUpload from './MemeUpload';
+import MemeDetails from './MemeDetails';
+import UserProfile from './UserProfile';
+import NotFound from './NotFound';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <BrowserRouter>
+    <Routes>
+   <Route path='/' element={<MemeVerse />} />
+   <Route path='/MemeExplorer' element={<MemeExplorer />} />
+   <Route path='/MemeUpload'element={<MemeUpload/>}/>
+   <Route path='/meme/:id' element={<MemeDetails/>}/>
+   <Route path='/UserProfile'element={<UserProfile/>}/>
+   <Route path='*'element={<NotFound/>}/>
+   </Routes>
+    </BrowserRouter>  
+   
+      
     </div>
   );
 }
